@@ -17,4 +17,8 @@ class HiveDataSource {
       encryptionCipher: HiveAesCipher(Key.fromUtf8(keyString).bytes),
     );
   }
+
+  Future<void> closeBox() async {
+    await _box?.close();
+  }
 }
