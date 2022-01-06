@@ -18,6 +18,14 @@ class HiveDataSource {
     );
   }
 
+  Future<List<Note>> getNotes() async {
+    var notes = <Note>[];
+    for (var key in box?.keys ?? []) {
+      notes.add(Note.fromJson(box?.get(key)));
+    }
+    return notes;
+  }
+
   Future<void> closeBox() async {
     await _box?.close();
   }
