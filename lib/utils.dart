@@ -1,3 +1,5 @@
+import 'package:encrypt/encrypt.dart';
+
 String generateKey(String password) {
   var passLength = password.length;
   if (passLength < 8 && passLength > 16) throw ('password length not match');
@@ -30,4 +32,16 @@ String generateKey(String password) {
   }
 
   return key;
+}
+
+String generateEncyptedName(String name, String password) {
+  final key = Key.fromUtf8(generateKey(password));
+  // Key.fromBase64(base64Encode(inputKey.codeUnits));
+  // print(inputKey.length);
+  final iv = IV.fromLength(16);
+  final iv2 = IV.fromLength(16);
+  final encrypter = Encrypter(AES(key));
+
+  final encrypted = encrypter.encrypt(name, iv: iv);
+  return encrypted.base64;
 }
