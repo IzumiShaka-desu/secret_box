@@ -9,4 +9,12 @@ class HiveDataSource {
   factory HiveDataSource() => _singleton;
   Box? _box;
   Box? get box => _box;
+  void openBox(String boxName, String password) async {
+    String keyString = generateKey(password);
+    String encryptedName = generateEncyptedName(boxName, password);
+    _box = await Hive.openBox(
+      encryptedName,
+      encryptionCipher: HiveAesCipher(Key.fromUtf8(keyString).bytes),
+    );
+  }
 }
