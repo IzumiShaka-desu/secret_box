@@ -33,5 +33,6 @@ class HiveDataSource {
 
   Future<void> closeBox() async {
     await _box?.close();
+    _box = null;
   }
 }
