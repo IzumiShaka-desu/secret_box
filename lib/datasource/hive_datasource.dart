@@ -21,9 +21,13 @@ class HiveDataSource {
   Future<List<Note>> getNotes() async {
     var notes = <Note>[];
     for (var key in box?.keys ?? []) {
-      notes.add(Note.fromJson(box?.get(key)));
+      notes.add(Note.fromMap(box?.get(key)));
     }
     return notes;
+  }
+
+  Future<bool> addNote(Note newNote) async {
+    return (await box?.add(newNote.toMap()) ?? 0) > 0;
   }
 
   Future<void> closeBox() async {
