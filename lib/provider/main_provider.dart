@@ -20,6 +20,13 @@ class MainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addNotes(Note newNote) async {
+    final isSuccess = await hiveDS.addNote(newNote);
+    if (isSuccess) {
+      loadNotes();
+    }
+  }
+
   void loadNotes() async {
     _notes = await hiveDS.getNotes();
     notifyListeners();
