@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.pink,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: LoginView.routeName,
+        // initialRoute: LoginView.routeName,
         onGenerateRoute: (route) {
           switch (route.name) {
             case HomeView.routeName:
