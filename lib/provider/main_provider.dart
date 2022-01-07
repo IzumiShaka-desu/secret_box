@@ -17,6 +17,8 @@ class MainProvider extends ChangeNotifier {
   void closeBox() async {
     _isLogin = false;
     await hiveDS.closeBox();
+    _notes = [];
+
     notifyListeners();
   }
 
