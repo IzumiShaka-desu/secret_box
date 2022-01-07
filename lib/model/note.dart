@@ -12,7 +12,8 @@ class Note {
     };
   }
 
-  factory Note.fromMap(Map<String, dynamic> map) {
+  factory Note.fromMap(data) {
+    Map<String, dynamic> map = Map<String, dynamic>.from(data);
     return Note(
       noteName: map['noteName'] ?? '',
       note: map['note'] ?? '',
