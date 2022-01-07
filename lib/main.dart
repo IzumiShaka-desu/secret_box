@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:secret_box/home_view.dart';
 import 'package:secret_box/login_view.dart';
 import 'package:secret_box/provider/main_provider.dart';
+import 'package:secret_box/test_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
           switch (route.name) {
             case HomeView.routeName:
               return CupertinoPageRoute(builder: (ctx) => const HomeView());
+            case TestView.routeName:
+              return CupertinoPageRoute(builder: (ctx) => const TestView());
             default:
               return CupertinoPageRoute(builder: (ctx) => const LoginView());
           }
